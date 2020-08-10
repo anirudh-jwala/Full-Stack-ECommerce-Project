@@ -11,19 +11,19 @@ const Card = ({
   reload = undefined,
   setReload = (f) => f,
 }) => {
-  const [redirect, setRedirect] = useState(false);
+  const [redirectToCart, setRedirectToCart] = useState(false);
+  const [redirectToSignIn, setRedirectToSignIn] = useState(false);
 
-  const cardTitle = product ? product.name : "A photo of T Shirt";
-  const cardDescription = product
-    ? product.description
-    : "I Write Code T Shirt";
+  const cardTitle = product ? product.name : "A photo of Laptop";
+  const cardDescription = product ? product.description : "Laptop description";
   const cardPrice = product ? product.price : "4";
 
   const addToCart = () => {
     if (isAuthenticated()) {
-      addItemToCart(product, () => setRedirect(true));
+      addItemToCart(product, () => setRedirectToCart(true));
       console.log("Added to cart");
     } else {
+      setRedirectToSignIn(true);
       console.log("Login Please!");
     }
   };
@@ -31,6 +31,12 @@ const Card = ({
   const getARedirectToCart = (redirect) => {
     if (redirect) {
       return <Redirect to="/cart" />;
+    }
+  };
+
+  const getARedirectToSignIn = (redirect) => {
+    if (redirect) {
+      return <Redirect to="/signin" />;
     }
   };
 
@@ -68,12 +74,15 @@ const Card = ({
     <div className="card text-white bg-dark border border-info">
       <div className="card-header lead">{cardTitle}</div>
       <div className="card-body">
-        {getARedirectToCart(redirect)}
+        {getARedirectToCart(redirectToCart)}
+        {getARedirectToSignIn(redirectToSignIn)}
         <ImageHelper product={product} />
         <p className="lead bg-success font-weight-normal text-wrap text-center mt-4">
           {cardDescription}
         </p>
-        <p className="btn btn-warning rounded  btn-sm px-4">₹ {cardPrice}</p>
+        <p className="btn btn-warning rounded  btn-sm px-4">
+          ₹ {parseFloat(cardPrice).toFixed(2)}
+        </p>
         <div className="row">
           <div className="col-12">{showAddToCart(addtoCart)}</div>
           <div className="col-12">{showRemoveFromCart(removeFromCart)}</div>

@@ -118,13 +118,22 @@ const Signup = () => {
               Submit
             </button>
           </form>
+          <p className="text-white text-center mt-4">
+            Already a member?{" "}
+            <Link
+              to="/signin"
+              style={{ textDecoration: "none", color: "green" }}
+            >
+              Get inside
+            </Link>
+          </p>
         </div>
       </div>
     );
   };
 
   return (
-    <Base title="Sign Up" description="Join the cult">
+    <Base title="Sign Up" description="Join from home">
       {successMessage()}
       {errorMessage()}
       {signUpForm()}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Base from "../core/Base";
 import { signin, authenticate, isAuthenticated } from "../auth/helper/index";
 
@@ -87,6 +87,15 @@ const Signin = () => {
               Submit
             </button>
           </form>
+          <p className="text-white text-center mt-4">
+            Are you new here?{" "}
+            <Link
+              to="/signup"
+              style={{ textDecoration: "none", color: "green" }}
+            >
+              Join Now
+            </Link>
+          </p>
         </div>
       </div>
     );

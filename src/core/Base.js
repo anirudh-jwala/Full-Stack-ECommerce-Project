@@ -22,7 +22,14 @@ const Base = ({
           <h4>
             If you got any questions, reach me out on instagram @anirudhjwala
           </h4>
-          <button className="btn btn-warning btn-lg">Contact Us</button>
+          <button className="btn btn-warning btn-lg">
+            <a
+              href="https://github.com/anirudh-jwala"
+              style={{ textDecoration: "none", color: "#fff" }}
+            >
+              Contact Now
+            </a>
+          </button>
         </div>
         <div className="container-fluid text-center text-white mt-2">
           An Amazing place to buy TShirts
