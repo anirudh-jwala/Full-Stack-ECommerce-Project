@@ -4,18 +4,22 @@ import Base from "./Base";
 import Card from "./Card";
 
 import "../styles.css";
+import * as ReactBootStrap from "react-bootstrap";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const loadAllProducts = () => {
     getProducts()
       .then((data) => {
         if (data.error) {
+          setLoading(true);
           setError(data.error);
           console.log(error);
         } else {
+          setLoading(false);
           setProducts(data);
         }
       })
@@ -28,14 +32,19 @@ const Home = () => {
 
   return (
     <Base title="Home Page" description="Welcome to TShirt Store">
-      <div className="row">
-        {products.map((product, index) => {
-          return (
-            <div key={index} className="col-sm-6 col-md-3 mb-4">
-              <Card product={product} />
-            </div>
-          );
-        })}
+      <div className="row justify-content-center">
+        {loading ? (
+          <ReactBootStrap.Spinner animation="border" />
+        ) : (
+          products &&
+          products.map((product, index) => {
+            return (
+              <div key={index} className="col-sm-6 col-md-3 mb-4">
+                <Card product={product} />
+              </div>
+            );
+          })
+        )}
       </div>
     </Base>
   );
