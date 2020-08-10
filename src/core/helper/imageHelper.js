@@ -6,12 +6,14 @@ const ImageHelper = ({ product }) => {
     : `https://images.pexels.com/photos/5054776/pexels-photo-5054776.jpeg`;
 
   return (
-    <img
-      src={imageUrl}
-      style={{ maxHeight: "100%", maxWidth: "100%" }}
-      className="mb-3 rounded border border-success"
-      alt=""
-    />
+    <div className="mb-3 rounded">
+      <img
+        src={imageUrl}
+        style={{ height: "240px", maxWidth: "100%" }}
+        className="rounded border border-success p-2"
+        alt=""
+      />
+    </div>
   );
 };
 

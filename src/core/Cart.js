@@ -35,22 +35,18 @@ const Cart = () => {
   return (
     <Base title="Your Cart" description="A curated list by you">
       <div className="row text-center">
-        <div className="col-md-6">
-          {products && products.length > 0 ? (
-            loadAllProducts(products)
-          ) : (
-            <h3>No products added</h3>
-          )}
-        </div>
-        <div className="col-md-6">
-          {products && products.length > 0 ? (
-            <PaymentB products={products} setRelaod={setReload} />
-          ) : (
-            <h3 className="alert alert-primary">
-              Find something <Link to="/">interesting</Link>
-            </h3>
-          )}
-        </div>
+        {products && products.length > 0 ? (
+          <h3 className="alert alert-primary">
+            Find something <Link to="/">interesting</Link>
+          </h3>
+        ) : (
+          <>
+            <div className="col-md-6">{loadAllProducts(products)}</div>
+            <div className="col-md-6">
+              <PaymentB products={products} setRelaod={setReload} />
+            </div>
+          </>
+        )}
       </div>
     </Base>
   );
