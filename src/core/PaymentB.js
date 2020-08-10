@@ -143,7 +143,7 @@ const PaymentB = ({ products, reload = undefined, setRelaod = (f) => f }) => {
 
   return (
     <div>
-      <h3>Your bill is ${getAmount()}</h3>
+      <h3 className="mt-4">Your bill is ${getAmount()}</h3>
       {showbtnDropIn()}
     </div>
   );

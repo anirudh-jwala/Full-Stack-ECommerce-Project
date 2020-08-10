@@ -34,7 +34,6 @@ const Signin = () => {
               didRedirect: true,
             });
           });
-          performRedirect();
         } else {
           setValues({
             ...values,

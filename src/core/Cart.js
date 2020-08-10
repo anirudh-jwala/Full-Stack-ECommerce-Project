@@ -3,6 +3,7 @@ import Base from "./Base";
 import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
 import PaymentB from "./PaymentB";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -34,12 +35,20 @@ const Cart = () => {
   return (
     <Base title="Your Cart" description="A curated list by you">
       <div className="row text-center">
-        <div className="col-6">{loadAllProducts(products)}</div>
-        <div className="col-6">
-          {products.length > 0 ? (
+        <div className="col-md-6">
+          {products && products.length > 0 ? (
+            loadAllProducts(products)
+          ) : (
+            <h3>No products added</h3>
+          )}
+        </div>
+        <div className="col-md-6">
+          {products && products.length > 0 ? (
             <PaymentB products={products} setRelaod={setReload} />
           ) : (
-            <h3>Please login or add something in cart</h3>
+            <h3 className="alert alert-primary">
+              Find something <Link to="/">interesting</Link>
+            </h3>
           )}
         </div>
       </div>
