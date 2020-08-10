@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { cartEmpty } from "./helper/cartHelper";
 import { getmeToken, processPayment } from "./helper/paymentHelper";
@@ -40,7 +41,7 @@ const PaymentB = ({ products, reload = undefined, setRelaod = (f) => f }) => {
 
   useEffect(() => {
     getToken(userId, token);
-  }, []);
+  });
 
   const getAmount = () => {
     let amount = 0;
@@ -66,7 +67,7 @@ const PaymentB = ({ products, reload = undefined, setRelaod = (f) => f }) => {
           .then((response) => {
             console.log("POINT-1", response);
             if (response.error) {
-              if (response.code == "1") {
+              if (response.code === "1") {
                 console.log("PAYMENT Failed!");
                 signout(() => {
                   return <Redirect to="/" />;
@@ -91,14 +92,14 @@ const PaymentB = ({ products, reload = undefined, setRelaod = (f) => f }) => {
               createOrder(userId, token, orderData)
                 .then((response) => {
                   if (response.error) {
-                    if (response.code == "1") {
+                    if (response.code === "1") {
                       console.log("ORDER FAILED");
                     }
                     signout(() => {
                       return <Redirect to="/" />;
                     });
                   } else {
-                    if (response.success == true) {
+                    if (response.success === true) {
                       console.log("ORDER PLACED");
                     }
                   }
@@ -135,7 +136,9 @@ const PaymentB = ({ products, reload = undefined, setRelaod = (f) => f }) => {
             </button>
           </div>
         ) : (
-          <h3>Please login first or add something in cart</h3>
+          <h3 className="alert alert-info">
+            Add something <Link to="/">intresting</Link> to cart
+          </h3>
         )}
       </div>
     );

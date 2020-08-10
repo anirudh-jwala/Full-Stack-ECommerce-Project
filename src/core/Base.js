@@ -24,7 +24,7 @@ const Base = ({
           </h4>
           <button className="btn btn-warning btn-lg">Contact Us</button>
         </div>
-        <div className="container-fluid text-center text-white">
+        <div className="container-fluid text-center text-white mt-2">
           An Amazing place to buy TShirts
         </div>
       </footer>

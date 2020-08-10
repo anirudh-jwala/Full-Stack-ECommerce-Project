@@ -13,7 +13,7 @@ const Signin = () => {
     didRedirect: false,
   });
 
-  const { email, password, error, success, loading, didRedirect } = values;
+  const { email, password, loading } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: "", [name]: event.target.value });

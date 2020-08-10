@@ -31,8 +31,8 @@ const Home = () => {
   });
 
   return (
-    <Base title="Home Page" description="Welcome to TShirt Store">
-      <div className="row justify-content-center">
+    <Base title="Work from Home" description="Welcome to Store">
+      <div className="row">
         {loading ? (
           <ReactBootStrap.Spinner animation="border" />
         ) : (

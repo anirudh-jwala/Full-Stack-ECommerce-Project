@@ -28,7 +28,7 @@ const Card = ({
     }
   };
 
-  const getARedirect = (redirect) => {
+  const getARedirectToCart = (redirect) => {
     if (redirect) {
       return <Redirect to="/cart" />;
     }
@@ -68,7 +68,7 @@ const Card = ({
     <div className="card text-white bg-dark border border-info">
       <div className="card-header lead">{cardTitle}</div>
       <div className="card-body">
-        {getARedirect(redirect)}
+        {getARedirectToCart(redirect)}
         <ImageHelper product={product} />
         <p className="lead bg-success font-weight-normal text-wrap text-center mt-4">
           {cardDescription}

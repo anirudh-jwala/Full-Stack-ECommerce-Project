@@ -14,7 +14,7 @@ const Signup = () => {
     success: false,
   });
 
-  const { name, email, password, gender, phone, error, success } = values;
+  const { name, email, password, error, success } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -114,26 +114,6 @@ const Signup = () => {
                 onChange={handleChange("password")}
               />
             </div>
-            {/*<div className="form-group">
-              <label className="text-light">Gender</label>
-              <select
-                className="form-control"
-                onChange={handleChange("gender")}
-                defaultValue={gender}
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label className="text-light">Phone Number</label>
-              <input
-                type="text"
-                className="form-control"
-                value={phone}
-                onChange={handleChange("phone")}
-              />
-            </div>*/}
             <button className="btn btn-success btn-block" onClick={onSubmit}>
               Submit
             </button>
@@ -148,7 +128,6 @@ const Signup = () => {
       {successMessage()}
       {errorMessage()}
       {signUpForm()}
-      {/*<p className="text-white text-center">{JSON.stringify(values)}</p>*/}
     </Base>
   );
 };
